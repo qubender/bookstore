@@ -18,7 +18,7 @@ public class Book {
     private double price;
 
     public Book() {
-        
+
     }
 
     public Book(String title, String author, int publicationYear, long isbn, double price) {
@@ -73,5 +73,8 @@ public class Book {
         return id;
     }
 
-    
+    public void setId(long id) {
+        this.id = id;
+    }
+
 }
