@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import hh.bookstore.bookstore.domain.Book;
 import hh.bookstore.bookstore.repository.BookRepository;
+import hh.bookstore.bookstore.repository.CategoryRepository;
 
 @Controller
 public class BookController {
+
     @RequestMapping("/index")
     public String index(Model model) {
 
@@ -18,9 +20,11 @@ public class BookController {
     }
 
     private BookRepository repository;
+    private CategoryRepository categoryRepository;
 
-    public BookController(BookRepository repository) {
+    public BookController(BookRepository repository, CategoryRepository categoryRepository) {
         this.repository = repository;
+        this.categoryRepository = categoryRepository;
     }
 
     @RequestMapping("/booklist")
@@ -32,6 +36,7 @@ public class BookController {
     @RequestMapping(value = "/addbook", method = RequestMethod.GET)
     public String addStudent(Model model) {
         model.addAttribute("book", new Book());
+        model.addAttribute("categories", categoryRepository.findAll());
         return "addbook";
     }
 
