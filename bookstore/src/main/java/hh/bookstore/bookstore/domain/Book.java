@@ -22,7 +22,7 @@ public class Book {
     private Category category;
 
     public Book() {
-
+        
     }
 
     public Book(String title, String author, int publicationYear, long isbn, double price) {
@@ -85,8 +85,5 @@ public class Book {
         this.category = category;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
+    
 }
