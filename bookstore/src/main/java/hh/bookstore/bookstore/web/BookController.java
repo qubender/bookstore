@@ -1,14 +1,19 @@
 package hh.bookstore.bookstore.web;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import hh.bookstore.bookstore.domain.Book;
 import hh.bookstore.bookstore.repository.BookRepository;
 import hh.bookstore.bookstore.repository.CategoryRepository;
+
 
 @Controller
 public class BookController {
@@ -57,4 +62,16 @@ public class BookController {
         model.addAttribute("book", repository.findById(bookId));
         return "modifybook";
     }
+
+    @RequestMapping(value="/allbooks", method = RequestMethod.GET)
+    public @ResponseBody List<Book> bookListRest() {
+        return (List<Book>) repository.findAll();
+    }
+
+    @RequestMapping(value="/allbooks/{id}", method=RequestMethod.GET)
+    public @ResponseBody Optional<Book> findBookRest(@PathVariable("id") Long bookId) {
+        return repository.findById(bookId);
+    }
+    
+    
 }
