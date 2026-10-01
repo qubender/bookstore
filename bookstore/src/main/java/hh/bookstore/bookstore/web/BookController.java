@@ -73,5 +73,8 @@ public class BookController {
         return repository.findById(bookId);
     }
     
-    
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String login() {
+        return "login";
+    }
 }
