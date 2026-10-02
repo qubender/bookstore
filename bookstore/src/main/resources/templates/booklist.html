@@ -11,7 +11,7 @@
     <div>
         <h1>Hello <span sec:authentication="name"></span>!</h1>
         <form th:action="@{/logout}" method="post">
-            <input type="submit" value="Sign Out"/>
+            <input type="submit" value="Sign Out" />
         </form>
         <h1>Books</h1>
         <table>
@@ -27,7 +27,7 @@
                 <td th:text="${b.title}"></td>
                 <td th:text="${b.isbn}"></td>
                 <td th:text="${b.publicationYear}"></td>
-                <td sec:authorize="hasRole ('ADMIN')"><a th:href="@{/delete/{id}(id=${b.id})}">Delete</a></td>
+                <td sec:authorize="hasAuthority ('ADMIN')"><a th:href="@{/delete/{id}(id=${b.id})}">Delete</a></td>
                 <td><a th:href="@{/edit/{id}(id=${b.id})}">Edit</a></td>
             </tr>
         </table>

@@ -14,7 +14,6 @@ import hh.bookstore.bookstore.domain.Book;
 import hh.bookstore.bookstore.repository.BookRepository;
 import hh.bookstore.bookstore.repository.CategoryRepository;
 
-
 @Controller
 public class BookController {
 
@@ -63,16 +62,16 @@ public class BookController {
         return "modifybook";
     }
 
-    @RequestMapping(value="/allbooks", method = RequestMethod.GET)
+    @RequestMapping(value = "/allbooks", method = RequestMethod.GET)
     public @ResponseBody List<Book> bookListRest() {
         return (List<Book>) repository.findAll();
     }
 
-    @RequestMapping(value="/allbooks/{id}", method=RequestMethod.GET)
+    @RequestMapping(value = "/allbooks/{id}", method = RequestMethod.GET)
     public @ResponseBody Optional<Book> findBookRest(@PathVariable("id") Long bookId) {
         return repository.findById(bookId);
     }
-    
+
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login() {
         return "login";
